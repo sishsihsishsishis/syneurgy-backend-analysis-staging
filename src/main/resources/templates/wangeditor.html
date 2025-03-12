@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<div id="div1">
+    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+</div>
+
+<script src="/editor/wangEditor.min.js"></script>
+<!-- 引入 wangEditor.min.js -->
+<script type="text/javascript">
+    const E = window.wangEditor
+    const editor = new E('#div1')
+    // 或者 const editor = new E( document.getElementById('div1') )
+    // 配置 server 接口地址
+    editor.config.uploadImgServer = '/upload/oss';
+    editor.config.uploadImgMaxSize = 2 * 1024 * 1024 // 2M
+    editor.config.uploadImgAccept = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+    editor.config.uploadImgParams = {dir: 'bbs'}
+    editor.config.uploadFileName = 'file' // 名字一定要交file
+    editor.config.uploadImgHooks = {
+        // 上传图片之前
+        before: function(xhr) {
+            // 可阻止图片上传
+            return true;
+        },
+        // 图片上传并返回了结果，图片插入已成功
+        success: function(xhr) {
+            console.log('success', xhr)
+        },
+        // 图片上传并返回了结果，但图片插入时出错了
+        fail: function(xhr, editor, resData) {
+            console.log('fail', resData)
+        },
+        // 上传图片出错，一般为 http 请求的错误
+        error: function(xhr, editor, resData) {
+            console.log('error', xhr, resData)
+        },
+        // 上传图片超时
+        timeout: function(xhr) {
+            console.log('timeout')
+        },
+        // 图片上传并返回了结果，想要自己把图片插入到编辑器中
+        // 例如服务器端返回的不是 { errno: 0, data: [...] } 这种格式，可使用 customInsert
+        customInsert: function(insertImgFn, result) {
+            console.log("你上传的地址是：", result);
+            // result 即服务端返回的接口
+            // insertImgFn 可把图片插入到编辑器，传入图片 src ，执行函数即可
+            insertImgFn(result.url)
+        }
+    }
+
+    editor.create()
+</script>
+
+</body>
+</html>

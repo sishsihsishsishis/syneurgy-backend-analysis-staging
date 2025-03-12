@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.PieSpeakerMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.PieSpeaker">
+        insert into pie_speaker (meeting_id, speaker,speaker_time,speaker_time_rate,negative,neutral,positive)
+        values
+        <foreach collection="PieSpeaker" item="s" separator=",">
+            (#{s.meeting_id}, #{s.speaker},#{s.speaker_time},#{s.speaker_time_rate},#{s.negative},#{s.neutral},#{s.positive})
+        </foreach>
+    </insert>
+
+    <select id="findSpeaker" parameterType="java.lang.Long" resultType="com.aws.sync.vo.PieSpeakerVO">
+        select speaker,speaker_time,speaker_time_rate from pie_speaker where meeting_id = #{param1}
+    </select>
+
+    <select id="findBarSpeaker" resultType="com.aws.sync.vo.BarSpeakerVO">
+        select speaker,negative,neutral,positive from pie_speaker where meeting_id = #{param1}
+    </select>
+
+    <select id="findSpeakerRate" resultType="com.aws.sync.vo.NlpRateVO">
+        select speaker,speaker_time_rate from pie_speaker where meeting_id = #{param1}
+    </select>
+
+
+</mapper>

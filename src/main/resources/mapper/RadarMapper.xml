@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.RadarMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.Radar">
+        insert into radar_table (meeting_id, k,v)
+        values
+        <foreach collection="Radar" item="r" separator=",">
+            (#{r.meeting_id}, #{r.k},#{r.v})
+        </foreach>
+    </insert>
+
+    <select id="getKV" resultType="com.aws.sync.vo.RadarVO">
+        select distinct k,v from radar_table where meeting_id = #{param1}
+    </select>
+
+
+
+
+</mapper>

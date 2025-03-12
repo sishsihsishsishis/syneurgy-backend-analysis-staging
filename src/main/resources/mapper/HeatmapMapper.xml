@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.HeatmapMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.Heatmap">
+        insert into heatmap (meeting_id, x, y,img)
+        values
+        <foreach collection="Heatmap" item="a" separator=",">
+            (#{a.meeting_id}, #{a.x},#{a.y},#{a.img})
+        </foreach>
+    </insert>
+    <insert id="addResultOneByOne">
+        insert into heatmap (meeting_id,x,y,img)
+        values (#{meeting_id},#{x},#{y},#{img})
+    </insert>
+
+    <select id="findHeatmap" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.HeatmapVO">
+        select x,y,img from heatmap where meeting_id = #{param1}
+    </select>
+
+
+
+</mapper>

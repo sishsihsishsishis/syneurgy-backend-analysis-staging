@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.SectionMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.Section">
+        insert into section_table (meeting_id, users, starts, ends, label)
+        values
+        <foreach collection="Section" item="s" separator=",">
+            (#{s.meeting_id}, #{s.users},#{s.starts},#{s.ends},#{s.label})
+        </foreach>
+    </insert>
+    
+    <select id="findTeam" resultType="com.aws.sync.vo.SectionTeamVO">
+        select starts,ends,label from section_table where meeting_id = #{param1} and users = 'team'
+    </select>
+
+    <select id="findUser" resultType="com.aws.sync.vo.SectionUserVO">
+        select users,starts,ends,label from section_table where meeting_id = #{param1} and users != 'team'
+    </select>
+
+
+
+
+</mapper>

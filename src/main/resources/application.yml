@@ -1,0 +1,112 @@
+s3:
+  storage:
+    accessKeyId: AKIATRKQV5SYSXUS7FGQ
+    secretAccessKey: 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
+    endpoint: https://s3.us-west-1.amazonaws.com
+#    bucketName: sync5
+    bucketName: sync-dev-server
+#    bucketName: hybrid-sync-server
+    root-directory: test
+    region: us-west-1
+  base-url: https://sync5.s3.us-west-1.amazonaws.com/
+server:
+  port: 8080
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    async:
+      request-timeout: -1
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://sync.cqxryvlbjnh5.us-west-1.rds.amazonaws.com:5432/syne
+    url: jdbc:postgresql://sync.cqxryvlbjnh5.us-west-1.rds.amazonaws.com:5432/sync-dev
+#    url: jdbc:postgresql://sync.cqxryvlbjnh5.us-west-1.rds.amazonaws.com:5432/hybrid-sync-server
+    username: postgres
+    password: sync_geng
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+    hikari:
+      max-lifetime: 500000
+      maximum-pool-size: 60
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+        ddl-auto: update
+        show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 2048MB
+      max-request-size: 2048MB
+
+  web:
+    resources:
+      static-locations: classpath:/static/
+
+  freemarker:
+    suffix: .html
+    cache: false
+
+  profiles:
+    active: dev
+
+  redis:
+#    host: 18.144.11.243
+    host: 18.144.100.85
+#    host: 54.215.45.218
+    port: 6379
+    timeout: 1800000
+    lettuce:
+      pool:
+        # 最大阻塞等待时间，负数表示没有限制
+        max-wait: -1
+        # 连接池中的最大空闲连接
+        max-idle: 5
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        # 连接池中最大连接数，负数表示没有限制
+        max-active: 20
+    password: 123456
+
+
+fireFiles:
+  auth-token: 559da0e8-21aa-4bec-a530-b65844392d72
+  api-url: https://api.fireflies.ai/graphql/
+
+openai:
+  api:
+    key: sk-proj-sK7ff3WWXS98BPfyYEp3T3BlbkFJPQ1oNsNgdFAxFEY9uFGs
+  url: https://api.openai.com/v1/chat/completions
+chatgpt:
+  api-key: sk-proj-sK7ff3WWXS98BPfyYEp3T3BlbkFJPQ1oNsNgdFAxFEY9uFGs
+
+  mail:
+    host: smtp.qq.com
+    username: 89375133@qq.com
+    password: hkaiubacntdkbgib
+    port: 465
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: false
+            required: false
+        debug: true

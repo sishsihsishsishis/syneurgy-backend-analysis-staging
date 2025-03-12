@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.IndividualRMapper">
+
+
+    <select id="selectTimeLine" resultType="java.lang.Double">
+        select distinct time_ms from individual_sync_r where meeting_id = #{param1} order by time_ms
+    </select>
+    <select id="selectUserList" resultType="java.lang.String">
+        select distinct users from individual_sync_r where meeting_id = #{param1} order by users
+    </select>
+    <select id="selectIndividualByUser" resultType="com.aws.sync.vo.IndividualVO">
+        select time_ms,individual_sync,individual_distance,individual_rate
+        from individual_sync_r where meeting_id = #{param1} and users = #{param2} order by time_ms
+    </select>
+
+
+</mapper>

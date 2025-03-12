@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.RResultMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.RResult">
+        insert into r_result_table (meeting_id, r_mean,r_std,time_ms,user00,user01,user10)
+        values
+        <foreach collection="RResult" item="r" separator=",">
+            (#{r.meeting_id}, #{r.r_mean},#{r.r_std},#{r.time_ms},#{r.user00},#{r.user01},#{r.user10})
+        </foreach>
+    </insert>
+    <insert id="addResultOneByOne">
+        insert into r_result_table (meeting_id, r_mean,r_std,time_ms,user00,user01,user10,user02,user03,user04,user05,user06,user07,user08,user09,user11,user12,user13,user14,user15)
+        values(#{meeting_id}, #{r_mean},#{r_std},#{time_ms},#{user00},#{user01},#{user10},#{user02},#{user03},#{user04},#{user05},#{user06},#{user07},#{user08},#{user09},#{user11},#{user12},#{user13},#{user14},#{user15})
+    </insert>
+
+    <select id="findMean" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.RMean">
+        select time_ms,r_mean from r_result_table where meeting_id = #{param1} order by time_ms ASC
+    </select>
+
+    <select id="findUser" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.AllUser">
+        select time_ms,user00,user01,user02,user03,user04,user05,user06,user07,user08,user09,user10,user11,user12
+                      ,user13,user14,user15 from r_result_table where meeting_id = #{param1} order by time_ms ASC
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.AResultMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.AResult">
+        insert into a_result_table (meeting_id, a_mean,a_std,time_ms,user00,user01,user10)
+        values
+        <foreach collection="AResult" item="a" separator=",">
+            (#{a.meeting_id}, #{a.a_mean},#{a.a_std},#{a.time_ms},#{a.user00},#{a.user01},#{a.user10})
+        </foreach>
+    </insert>
+    <insert id="addResultOneByOne">
+        insert into a_result_table (meeting_id, a_mean,a_std,time_ms,user00,user01,user10,user02,user03,user04,user05,user06,user07,user08,user09,user11,user12,user13,user14,user15)
+        values(#{meeting_id}, #{a_mean},#{a_std},#{time_ms},#{user00},#{user01},#{user10},#{user02},#{user03},#{user04},#{user05},#{user06},#{user07},#{user08},#{user09},#{user11},#{user12},#{user13},#{user14},#{user15})
+    </insert>
+
+    <select id="findMean" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.AMean">
+        select time_ms,a_mean from a_result_table where meeting_id = #{param1} and (time_ms % 8000 = 0) order by time_ms ASC
+    </select>
+
+    <select id="findUser" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.AllUser">
+        select time_ms,user00,user10,user01,user02,user03,user04,user05,user06,user07,user08,user09,user11,user12,user13,user14,user15 from a_result_table where meeting_id = #{param1} and (time_ms % 8000 = 0)  order by time_ms ASC
+    </select>
+
+    <select id="findTimeline" resultType="java.lang.Long">
+        select time_ms from a_result_table where meeting_id = #{param1} order by time_ms ASC
+    </select>
+
+    <select id="findData" resultType="com.aws.sync.vo.DataAVO">
+        select time_ms,a_mean,a_std,user00,user01,user02,user03,user04,user05,user06,user07,user08,user09,user10,user11,user12
+             ,user13,user14,user15,user90,user91,user92,user93,user94,user95,user96,user97,user98,user99 from a_result_table where meeting_id = #{param1} order by time_ms ASC
+    </select>
+
+
+</mapper>

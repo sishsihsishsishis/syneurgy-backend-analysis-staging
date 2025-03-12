@@ -1,0 +1,79 @@
+Speaker	Start	End	Sentence	Emotion	DialogueAct
+speaker_00	0.0	0.58	 record to this.	positive	Abandoned or Turn-Exit
+speaker_00	0.62	0.86	 okay.	positive	Acknowledge (Backchannel)
+speaker_00	9.06	11.28	 i can't believe how poorly the project turned out.	positive	Statement-non-opinion
+speaker_00	11.34	12.04	 it's unbelievable.	positive	Statement-opinion
+speaker_00	13.14	13.8	 hold on.	positive	Action-directive
+speaker_00	13.88	14.86	 it wasn't that bad.	positive	Statement-non-opinion
+speaker_00	15.12	15.58	 we just.	positive	Statement-opinion
+speaker_00	15.78	16.32	 just what?	positive	Wh-Question
+speaker_00	16.42	17.84	 it was a total mess, honestly.	positive	Statement-non-opinion
+speaker_00	18.04	19.14	 did you even look at the figures?	positive	Yes-No-Question
+speaker_01	20.38	22.32	 yes, but you're not listening to me.	positive	Action-directive
+speaker_01	22.72	23.42	 if we can see.	positive	Statement-non-opinion
+speaker_00	23.52	24.06	 no, no, no.	positive	Agree/Accept
+speaker_00	24.1	24.66	 you listen.	positive	Statement-opinion
+speaker_00	24.84	27.4	 every time we try something, it's like you're not even trying.	positive	Statement-opinion
+speaker_00	27.52	28.26	 it's frustrating.	positive	Statement-opinion
+speaker_00	30.0	31.44	 can i speak?	positive	Hold before answer/agreement
+speaker_01	31.84	33.28	 you keep cutting me off.	positive	Statement-non-opinion
+speaker_01	33.94	35.4	 what i'm trying to say is.	positive	Statement-non-opinion
+speaker_00	35.42	36.44	 i'm tired of excuses.	positive	Statement-non-opinion
+speaker_00	36.8	38.18	 i expected better results.	positive	Statement-non-opinion
+speaker_00	38.36	39.52	 this was a simple task.	positive	Statement-non-opinion
+speaker_01	40.72	41.24	 simple?	positive	Backchannel in question form
+speaker_01	41.64	45.42	 do you even understand the complexity of what we were dealing with?	positive	Yes-No-Question
+speaker_01	45.8	47.04	 the data was all over the place.	positive	Statement-non-opinion
+speaker_01	47.04	47.56	 exactly.	positive	Agree/Accept
+speaker_00	47.74	48.14	 exactly.	positive	Agree/Accept
+speaker_00	48.68	49.5	 excuses again.	positive	Abandoned or Turn-Exit
+speaker_00	49.74	52.42	 why can't you admit we failed because we weren't prepared enough?	positive	Rhetorical-Questions
+speaker_01	53.620000000000005	53.86	 we?	positive	Wh-Question
+speaker_01	54.14	57.08	 it seems like you are putting all the blame on me.	positive	Statement-opinion
+speaker_01	57.08	58.82	 you were part of this too.	positive	Statement-non-opinion
+speaker_01	58.92	59.28	 remember?	positive	Yes-No-Question
+speaker_00	59.88	59.900000000000006	 okay.	positive	Acknowledge (Backchannel)
+speaker_00	59.900000000000006	59.98	 okay.	positive	Acknowledge (Backchannel)
+speaker_00	59.98	60.0	 okay.	positive	Acknowledge (Backchannel)
+speaker_00	60.0	60.46	 oh, please.	positive	Conventional-closing
+speaker_00	60.58	61.4	 i did my part.	positive	Statement-non-opinion
+speaker_00	61.54	63.36	 i was the one who stayed late every day.	positive	Statement-non-opinion
+speaker_00	63.52	64.14	 not you.	positive	Statement-non-opinion
+speaker_01	65.52	66.56	 that's not fair, alex.	positive	Statement-opinion
+speaker_01	67.3	69.34	 i had other responsibilities too.	positive	Statement-non-opinion
+speaker_01	69.56	70.16	 you know that.	positive	Statement-opinion
+speaker_00	70.7	71.68	 responsibilities are not.	positive	Statement-non-opinion
+speaker_00	71.88	73.76	 this project was a priority.	positive	Abandoned or Turn-Exit
+speaker_00	74.02	75.06	 you just don't get it.	positive	Statement-opinion
+speaker_01	76.12	77.4	 i get it just fine.	positive	Statement-non-opinion
+speaker_01	78.0	80.96000000000001	 but you making it harder doesn't help.	positive	Statement-opinion
+speaker_01	81.4	82.88	 you're always so negative.	positive	Statement-opinion
+speaker_00	83.02	84.44	 well, no.	positive	Agree/Accept
+speaker_00	84.8	86.68	 well, someone has to be realistic here.	positive	Statement-opinion
+speaker_00	87.06	88.03999999999999	 you just keep dreaming.	positive	Statement-opinion
+speaker_00	88.03999999999999	89.98	 that all the things will fail.	positive	Abandoned or Turn-Exit
+speaker_00	90.5	92.42	 you're not gonna be able to fix themselves.	positive	Statement-opinion
+speaker_01	92.42	93.14	 that's not true.	positive	Statement-non-opinion
+speaker_01	93.14	95.78	 i'm being proactive.	positive	Statement-non-opinion
+speaker_01	95.78	98.6	 but with you always on my back, it's tough.	positive	Statement-non-opinion
+speaker_00	98.6	99.92	 whatever, jordan.	positive	Abandoned or Turn-Exit
+speaker_00	99.92	102.54	 if you can't handle feedback, maybe you shouldn't be on this team.	positive	Statement-opinion
+speaker_01	102.54	108.4	 maybe if the feedback was actually constructive and not just blaming.	positive	Statement-opinion
+speaker_01	108.4	111.5	 it will be easier to handle.	positive	Statement-opinion
+speaker_00	111.5	113.48	 this isn't going anywhere.	positive	Statement-opinion
+speaker_01	113.48	114.0	 let's just drop it.	positive	Action-directive
+speaker_01	114.0	114.5	 fine by me.	positive	Statement-opinion
+speaker_00	114.5	115.0	 okay.	positive	Acknowledge (Backchannel)
+speaker_00	115.0	115.5	 bye.	positive	Conventional-closing
+speaker_00	115.5	116.0	 bye.	positive	Conventional-closing
+speaker_00	116.0	116.5	 bye.	positive	Conventional-closing
+speaker_00	116.5	117.0	 bye.	positive	Conventional-closing
+speaker_00	117.0	117.5	 bye.	positive	Conventional-closing
+speaker_00	117.5	117.98	 bye.	positive	Conventional-closing
+speaker_00	117.98	118.48	 bye.	positive	Conventional-closing
+speaker_00	118.48	118.98	 bye.	positive	Conventional-closing
+speaker_00	118.98	119.3	 bye.	positive	Conventional-closing
+speaker_00	119.3	119.48	 bye.	positive	Conventional-closing
+speaker_00	119.48	119.7	 bye.	positive	Conventional-closing
+speaker_00	119.7	119.98	 bye.	positive	Conventional-closing
+speaker_00	119.98	149.96	 thank you.	positive	Conventional-closing

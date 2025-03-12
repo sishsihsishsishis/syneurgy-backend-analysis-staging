@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.UserAvatarMapper">
+    <select id="findAvatar" resultType="com.aws.sync.vo.UserAvatarVO">
+        select users,url from user_avatar where meeting_id = #{param1} order by users ASC
+    </select>
+    <select id="findUsers" resultType="java.lang.String">
+        select distinct users from user_avatar where meeting_id = #{param1} order by users
+    </select>
+
+
+</mapper>

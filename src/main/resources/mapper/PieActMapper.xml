@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.PieActMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.PieAct">
+        insert into pie_act (meeting_id, act,act_time,act_time_rate)
+        values
+        <foreach collection="PieAct" item="s" separator=",">
+            (#{s.meeting_id}, #{s.act},#{s.act_time},#{s.act_time_rate})
+        </foreach>
+    </insert>
+
+    <select id="findAct" resultType="com.aws.sync.vo.PieActVO">
+        select act,act_time,act_time_rate from pie_act where meeting_id = #{param1}
+    </select>
+
+
+</mapper>

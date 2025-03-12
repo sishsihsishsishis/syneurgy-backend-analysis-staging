@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.BarEmotionMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.BarEmotion">
+        insert into bar_emotion (meeting_id, emotion,users,score)
+        values
+        <foreach collection="BarEmotion" item="b" separator=",">
+            (#{b.meeting_id}, #{b.emotion},#{b.users},#{b.score})
+        </foreach>
+    </insert>
+
+    <select id="findEmotion" resultType="com.aws.sync.vo.BarEmotionVO">
+        select users,emotion,score from bar_emotion where meeting_id = #{param1}
+    </select>
+
+
+</mapper>

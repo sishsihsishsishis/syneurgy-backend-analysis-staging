@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.RSyncMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.Rsync">
+        insert into r_sync_table (meeting_id, start_time,r_sync)
+        values
+        <foreach collection="Rsync" item="r" separator=",">
+            (#{r.meeting_id}, #{r.start_time},#{r.r_sync})
+        </foreach>
+    </insert>
+
+    <select id="findSync" parameterType="java.lang.Long" resultType="com.aws.sync.vo.csv.SyncR">
+        select start_time,r_sync from r_sync_table where meeting_id = #{param1} order by start_time ASC
+    </select>
+
+
+</mapper>

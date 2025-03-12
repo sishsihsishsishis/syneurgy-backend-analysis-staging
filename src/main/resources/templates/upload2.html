@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+</head>
+<body>
+    <h1>视频上传</h1>
+    <form action="/meeting/upload" enctype="multipart/form-data" method="post">
+         <input name="dir" value="输入文件">
+         <input name="file" type="file">
+         <input type="submit" value="文件上传">
+         <br>
+    </form>
+    <br>
+    <br>
+    <h1>文件上传</h1>
+        <form action="/s3/uploadByMeeting" enctype="multipart/form-data" method="post">
+        <input name="dir" value="输入文件">
+        <input name="file" type="file">
+        <input type="submit" value="文件上传">
+        <br>
+        <input name="meetingID" placeholder="会议号">
+    </form>
+
+</body>
+</html>

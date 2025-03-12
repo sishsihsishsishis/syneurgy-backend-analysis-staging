@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.NlpWordCountMapper">
+    <insert id="addOneByOne" parameterType="com.aws.sync.entity.NlpWordCount">
+        insert into nlp_word_count(meeting_id,speaker,time_ms,count) values (#{meeting_id},#{speaker},#{time_ms},#{count})
+    </insert>
+
+
+</mapper>

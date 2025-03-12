@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.PieEmotionMapper">
+    <insert id="addBatch" parameterType="com.aws.sync.entity.PieEmotion">
+        insert into pie_emotion (meeting_id, emotion,emotion_time,emotion_time_rate)
+        values
+        <foreach collection="PieEmotion" item="s" separator=",">
+            (#{s.meeting_id}, #{s.emotion},#{s.emotion_time},#{s.emotion_time_rate})
+        </foreach>
+    </insert>
+
+    <select id="findEmotion" resultType="com.aws.sync.vo.PieEmotionVO">
+        select distinct emotion,emotion_time,emotion_time_rate from pie_emotion where meeting_id = #{param1}
+    </select>
+
+</mapper>

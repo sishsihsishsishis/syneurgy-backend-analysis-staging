@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aws.sync.mapper.MeetingMapper">
+    <select id="findVideo" resultType="com.aws.sync.vo.VideoVO">
+        select meeting_id,is_handle,video_url,img_url,upload_time,is_update,meeting_start_time,thumbnail from meeting_table
+    </select>
+
+    <select id="findHandle" parameterType="java.lang.Long" resultType="com.aws.sync.vo.VideoVO">
+        select meeting_id,is_handle,video_url from meeting_table where meeting_id = #{param1}
+    </select>
+
+    <update id="updateHandle">
+        update meeting_table set is_handle = 1 where meeting_id = #{param1}
+    </update>
+
+    <update id="updateScore" parameterType="com.aws.sync.vo.csv.Score">
+        update meeting_table set body_score = #{body_score}, behavior_score = #{behavior_score}, total_score = #{total_score},
+                                 nlp_equal_participation = #{nlp_equal_participation},
+                                 nlp_speaker_time = #{nlp_speaker_time}
+                             where meeting_id = #{meeting_id}
+    </update>
+
+    <select id="getScore" resultType="com.aws.sync.vo.csv.Score">
+        select body_score,behavior_score,total_score,duration,meeting_start_time,brain_score from meeting_table where meeting_id = #{param1}
+    </select>
+
+    <select id="findFileName" parameterType="java.lang.Long" resultType="java.lang.String" >
+        select video_url from meeting_table where meeting_id = #{param1}
+    </select>
+
+    <update id="updateTime">
+        update meeting_table set meeting_start_time = #{param2} where meeting_id = #{param1}
+    </update>
+
+    <insert id="savaMeeting" parameterType="com.aws.sync.entity.MeetingTable" useGeneratedKeys="true" keyProperty="meeting_id">
+        insert into meeting_table(team_id,upload_time,duration,is_handle,video_url,img_url)
+        values (#{team_id},#{upload_time},#{duration},#{is_handle},#{video_url},#{img_url})
+    </insert>
+
+
+</mapper>
